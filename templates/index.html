@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>JSON FILE PARSER 2021</title>
+{% endblock %}
+
+{% block body %}
+<form action = '/submit', method="post" class='format'>
+    <p>
+    <label value='Enter a user name(@ZelenskyyUa):'></label>
+    <label><h3 class='message'>Enter user name:</h3></label>
+    <input type="text", name = 'submission_user_name'></input>
+    </p>
+    <p>
+    <input type="submit", value='SUBMIT'></input>
+    </p>
+</form>
+{% endblock %}
