@@ -1,8 +1,7 @@
 '''
 The module creates UI using flask.
 '''
-import os
-import webbrowser
+
 from flask import Flask, render_template, request
 from geopy.geocoders import Nominatim
 from folium_map import create_map
@@ -49,7 +48,7 @@ in the file.
         names.append(friend['screen_name'])
         lenght += 1
 
-    map = create_map(zip(locations, names))
+    create_map(zip(locations, names))
 
     return render_template('map/JSON_map.html')
 
