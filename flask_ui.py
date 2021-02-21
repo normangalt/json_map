@@ -1,22 +1,26 @@
 '''
 The module creates UI using flask.
 '''
-
+import os
+import webbrowser
 from flask import Flask, render_template, request
 from geopy.geocoders import Nominatim
 from folium_map import create_map
 from api import api_file_retriever
 
-application = Flask(__name__)
+app = Flask(__name__)
 
-@application.route('/')
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+
+@app.route('/')
 def index():
     '''
     Returns main template of the site.
     '''
     return render_template('index.html')
 
-@application.route('/submit', methods = ['POST'])
+
+@app.route('/submit', methods = ['POST'])
 def submit():
     '''
     Returns a site for navigation
@@ -25,9 +29,13 @@ in the file.
     if not request.form.get('submission_user_name'):
         return render_template('error.html')
 
-    geolocator = Nominatim(user_agent = 'JsonMapsFolium')
+    geolocator = Nominatim(user_agent = 'JsonMaps')
     user_name = request.form.get('submission_user_name')
-    friends_json = api_file_retriever(user_name)
+    try:
+        friends_json = api_file_retriever(user_name)
+    except:
+        return render_template('error.html')
+
     locations = []
     names = []
     lenght = 0
@@ -41,11 +49,12 @@ in the file.
         names.append(friend['screen_name'])
         lenght += 1
 
-    create_map(zip(locations, names))
+    map = create_map(zip(locations, names))
 
-    return render_template('JSON_map.html')
+    return render_template('map/JSON_map.html')
 
-@application.route('/get_back', methods = ['POST'])
+
+@app.route('/get_back', methods = ['POST'])
 def get_back():
     '''
     Returns a main site template.
@@ -53,4 +62,4 @@ def get_back():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    application.run()
+    app.run()

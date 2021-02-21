@@ -26,7 +26,7 @@ Returns 'Success!!!' if there was no problems.
 
         map_folium.add_child(figure)
         map_folium.add_child(flm.LayerControl())
-        map_folium.save('templates/JSON_map.html')
+        map_folium.save('templates/map/JSON_map.html')
 
     except ValueError:
         return 'Error.'

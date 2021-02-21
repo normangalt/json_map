@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "c:\\Users\\romak\\OneDrive\\Робочий стіл\\OP\\ЛР№2.2\\lab_2_2\\Scripts\\python.exe"
+    "python.pythonPath": "c:\\Users\\romak\\OneDrive\\Робочий стіл\\OP\\ЛР№2.2\\lab_2_2\\Scripts\\python.exe",
+    "git.ignoreLimitWarning": true
 }
