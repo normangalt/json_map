@@ -18,7 +18,6 @@ def index():
     '''
     return render_template('index.html')
 
-
 @app.route('/submit', methods = ['POST'])
 def submit():
     '''
@@ -51,7 +50,6 @@ in the file.
     create_map(zip(locations, names))
 
     return render_template('map/JSON_map.html')
-
 
 @app.route('/get_back', methods = ['POST'])
 def get_back():
